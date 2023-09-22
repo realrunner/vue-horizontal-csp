@@ -6,6 +6,7 @@ import replace from '@rollup/plugin-replace';
 import babel from 'rollup-plugin-babel';
 import {terser} from 'rollup-plugin-terser';
 import minimist from 'minimist';
+import css from "rollup-plugin-css-only";
 
 const argv = minimist(process.argv.slice(2));
 
@@ -26,8 +27,9 @@ const baseConfig = {
       'process.env.NODE_ENV': JSON.stringify('production'),
       'process.env.ES_BUILD': JSON.stringify('false'),
     },
+    css: {},
     vue: {
-      css: true,
+      css: false,
       template: {
         isProduction: true,
       },
@@ -65,6 +67,7 @@ if (!argv.format || argv.format === 'es') {
       file: 'dist/vue-horizontal.esm.js',
       format: 'esm',
       exports: 'named',
+      assetFileNames: 'bundle.css'
     },
     plugins: [
       replace({
@@ -72,6 +75,7 @@ if (!argv.format || argv.format === 'es') {
         'process.env.ES_BUILD': JSON.stringify('true'),
       }),
       ...baseConfig.plugins.preVue,
+      css(baseConfig.plugins.css),
       vue(baseConfig.plugins.vue),
       babel({
         ...baseConfig.plugins.babel,

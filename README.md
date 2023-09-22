@@ -45,7 +45,7 @@ and a bunch of other fun stuff.
 npm i vue-horizontal
 # for Vue 3
 # migration notes: https://github.com/fuxingloh/vue-horizontal/pull/87
-npm i vue-horizontal@next 
+npm i vue-horizontal@next
 # or
 yarn add vue-horizontal
 # or via <script>
@@ -60,10 +60,11 @@ https://cdn.jsdelivr.net/npm/vue-horizontal@0.x.x/dist/vue-horizontal.esm.min.js
 ```vue
 <script>
 import VueHorizontal from "vue-horizontal";
+import VueHorizontal from "vue-horizontal-csp/bundle.css";
 
 export default {
-  components: {VueHorizontal}
-}
+  components: { VueHorizontal }
+};
 </script>
 ```
 
@@ -73,10 +74,11 @@ export default {
 <summary><b>Import Globally</b></summary>
 
 ```javascript
-import Vue from 'vue';
+import Vue from "vue";
 import VueHorizontal from "vue-horizontal";
+import VueHorizontal from "vue-horizontal-csp/bundle.css";
 
-Vue.component(VueHorizontal)
+Vue.component(VueHorizontal);
 ```
 
 </details>
@@ -105,18 +107,19 @@ Vue.component(VueHorizontal)
 
 <script>
 import VueHorizontal from "vue-horizontal";
+import VueHorizontal from "vue-horizontal-csp/bundle.css";
 
 export default {
-  components: {VueHorizontal},
+  components: { VueHorizontal },
   data() {
     return {
       // E.g: creates 20 array items...
-      items: [...Array(20).keys()].map((i) => {
-        return {title: `Item ${i}`, content: `🚀 Content ${i}`};
-      }),
-    }
+      items: [...Array(20).keys()].map(i => {
+        return { title: `Item ${i}`, content: `🚀 Content ${i}` };
+      })
+    };
   }
-}
+};
 </script>
 
 <style scoped>
@@ -194,4 +197,5 @@ This project is another take on it with an ultra simple implementation that is e
 to the user rather than the library.
 
 ## License
+
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffuxingloh%2Fvue-horizontal.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffuxingloh%2Fvue-horizontal?ref=badge_large)
